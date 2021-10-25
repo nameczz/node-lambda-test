@@ -8,7 +8,7 @@ export async function handler(data: any) {
   const { index } = data.queryStringParameters.index;
   try {
     const res = await elasticSearchClient.indices.delete({ index });
-    return genLambdaResponse(ERROR_CODE.SUCCESS, res);
+    return res;
   } catch (e: any) {
     return genLambdaResponse(
       ERROR_CODE.BAD_REQUEST,

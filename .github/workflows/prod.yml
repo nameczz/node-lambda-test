@@ -17,7 +17,7 @@ jobs:
           yarn build
           yarn zip
 
-      - name: Deploy to lambda
+      - name: Deploy Delete Index Function to lambda
         uses: appleboy/lambda-action@master
         with:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -26,3 +26,33 @@ jobs:
           function_name: es-delete-index
           zip_file: function.zip
           handler: dist/DeleteIndex.handler
+
+      - name: Deploy Search Function to lambda
+        uses: appleboy/lambda-action@master
+        with:
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: ${{ secrets.AWS_REGION }}
+          function_name: es-search
+          zip_file: function.zip
+          handler: dist/Search.handler
+
+      - name: Deploy Create And Update Function to lambda
+        uses: appleboy/lambda-action@master
+        with:
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: ${{ secrets.AWS_REGION }}
+          function_name: es-create-update
+          zip_file: function.zip
+          handler: dist/Update.handler
+
+      - name: Deploy Delete Doc Function to lambda
+        uses: appleboy/lambda-action@master
+        with:
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: ${{ secrets.AWS_REGION }}
+          function_name: es-delete-doc
+          zip_file: function.zip
+          handler: dist/DeleteDoc.handler

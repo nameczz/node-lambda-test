@@ -48,7 +48,7 @@ export async function handler(data: any) {
         ...metadata,
       },
     });
-    return genLambdaResponse(ERROR_CODE.SUCCESS, res);
+    return res;
   } catch (e: any) {
     return genLambdaResponse(
       ERROR_CODE.BAD_REQUEST,
