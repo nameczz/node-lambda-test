@@ -1,8 +1,11 @@
 import { ERROR_CODE } from "../types/Error";
 
-export const genLambdaResponse = (status: ERROR_CODE, body: any) => {
+export const genLambdaResponse = (status: ERROR_CODE, data: any) => {
   return JSON.stringify({
     statusCode: status,
-    body,
+    body: {
+      statusCode: status,
+      data,
+    },
   });
 };
