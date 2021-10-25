@@ -1,0 +1,11 @@
+{
+  "name": "zilliz-search-lambda",
+  "author": "zizhao.chen@zilliz.com",
+  "version": "0.0.1",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@elastic/elasticsearch": "^7.15.0"
+  }
+}
